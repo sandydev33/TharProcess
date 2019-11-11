@@ -4,19 +4,17 @@
 <dict>
 	<key>DEV</key>
 	<dict>
-		<key>OLD</key>
-		<string>http://172.20.2.236:8089/ </string>
 		<key>AuthURL</key>
 		<string>DEV AuthURL</string>
 		<key>BaseURL</key>
-		<string>http://192.168.0.25:8089/</string>
+		<string>http://172.20.2.23:8484/</string>
 	</dict>
 	<key>PROD</key>
 	<dict>
 		<key>AuthURL</key>
 		<string>PROD AuthURL</string>
 		<key>BaseURL</key>
-		<string>http://13.127.158.45:8089/</string>
+		<string>http://172.20.2.23:8484/  </string>
 	</dict>
 </dict>
 </plist>

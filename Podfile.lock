@@ -1,0 +1,60 @@
+PODS:
+  - Alamofire (4.8.2)
+  - AppCenter/Core (2.0.1)
+  - AppCenter/Distribute (2.0.1):
+    - AppCenter/Core
+  - Charts (3.3.0):
+    - Charts/Core (= 3.3.0)
+  - Charts/Core (3.3.0)
+  - IQKeyboardManagerSwift (6.3.0)
+  - Moya (11.0.2):
+    - Moya/Core (= 11.0.2)
+  - Moya/Core (11.0.2):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - ReachabilitySwift (4.3.1)
+  - Result (3.2.4)
+  - SDWebImage (4.4.6):
+    - SDWebImage/Core (= 4.4.6)
+  - SDWebImage/Core (4.4.6)
+  - SVProgressHUD (2.2.5)
+  - SwiftCharts (0.6.5)
+
+DEPENDENCIES:
+  - AppCenter/Distribute
+  - Charts
+  - IQKeyboardManagerSwift (~> 6.2)
+  - Moya (~> 11.0)
+  - ReachabilitySwift
+  - SDWebImage (~> 4.0)
+  - SVProgressHUD
+  - SwiftCharts (~> 0.6.5)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AppCenter
+    - Charts
+    - IQKeyboardManagerSwift
+    - Moya
+    - ReachabilitySwift
+    - Result
+    - SDWebImage
+    - SVProgressHUD
+    - SwiftCharts
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AppCenter: 6a5ff2fd007b53431259fdd74f91eb3d0dfea3d1
+  Charts: ec1f57f9340054155691e84d4544a1d239d382c5
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
+  Moya: a725035953bc1c0eb1be505ab903984501d82440
+  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftCharts: 2e755ea292f0b87d3e4b2c1eb5afc080a20cdc15
+
+PODFILE CHECKSUM: b0fb2ceb739650caf3016a4bed986c8be7c9f7a0
+
+COCOAPODS: 1.6.1

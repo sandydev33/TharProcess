@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+protocol PreChecklistDataSourceType {
+    
+}
+
+class PreChecklistDataSource: PreChecklistDataSourceType {
+    
+}

@@ -7,3 +7,30 @@
 //
 
 import Foundation
+
+
+final class M_TabView: Codable {
+    
+    var formId: Int?
+    var formName: String?
+    
+    
+    enum CodingKeys: String, CodingKey {
+     
+        case formId = "formId"
+        case formName = "formName"
+       
+    }
+    
+    init() {
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        formId = try values.decodeIfPresent(Int.self, forKey: .formId)
+        formName = try values.decodeIfPresent(String.self, forKey: .formName)
+   
+    }
+    
+  
+}

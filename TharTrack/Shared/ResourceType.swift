@@ -11,17 +11,21 @@ import Moya
 
 enum ResourceType {
     case validateUser(userName: String, password: String)
-    case getAllFolderWithParentChild
-    case getQuickViewData
-    case getFormBuilderData
+    case forgotUser(email:String)
+    case getAllPurchaseOrderList
+    case getPurchaseOrderByPurchaseOrderId(ID:Int)
+    case getRejectPurchaseOrder(ID:Int ,comment:String)
+    case getOnHoldPurchaseOrder(ID:Int,comment:String)
     case download(fileName: String)
-    case getAllActiveWatchHour
-    case getVoyageData
-    case getDropDownData
-    case syncingData(syncData:String)
+    case getAllActiveBagSize
+    case getAllTharDocs
+    case getAllBranch
+    case approvePurchaseOrder(ID:Int , bagSize:String)
+    case getAllVisibleDocument
+    case requestDocuments(model:String)
     
     var localLocation: URL? {
-        
+
         switch self {
         case .download(let fileName):
             let directory = FileSystem.downloadDirectory
@@ -31,7 +35,7 @@ enum ResourceType {
             return nil
         }
     }
-    
+
     var downloadDestination: DownloadDestination {
        return { _, _ in return (self.localLocation!, [.removePreviousFile, .createIntermediateDirectories]) }
     }
@@ -46,23 +50,31 @@ extension ResourceType:TargetType {
     var path: String {
         switch self {
         case .validateUser(_, _):
-            return Constant.kAuthPath
-        case .getQuickViewData:
-            return Constant.kRootPath + Constant.kQuickViewPath
-        case .getAllFolderWithParentChild:
-            return Constant.kRootPath + Constant.kAllFolderWithParentChild
-        case .getFormBuilderData:
-            return Constant.kRootPath + Constant.kFormBuilderPath
+            return Constant.kLoginAuth
+        case .getAllPurchaseOrderList:
+            return Constant.kRootPath + Constant.kAllPurchaseOrder
         case .download(let fileName):
-            return Constant.kRootPath + Constant.kDownloadPath + fileName
-        case .getAllActiveWatchHour:
-            return Constant.kRootPath + Constant.kAllActiveWatchHour
-        case .getVoyageData:
-            return Constant.kRootPath + Constant.kVoyageInProgress
-        case .getDropDownData:
-            return Constant.kRootPath + Constant.kDropDownPath
-        case .syncingData(_):
-            return Constant.kRootPath + Constant.kSyncingPath
+            return  Constant.kDownloadPath + fileName
+        case .getPurchaseOrderByPurchaseOrderId(let ID):
+             return Constant.kRootPath + Constant.kPONByOrderId + String(ID)
+        case .getRejectPurchaseOrder(let ID, let comment):
+            return Constant.kRootPath + Constant.kRejectPurchaseOrder + String(ID) + "/\(comment) "
+        case .forgotUser(let email):
+            return Constant.kForgot + email
+        case .getOnHoldPurchaseOrder(let ID, _):
+            return Constant.kRootPath + Constant.kOnHoldPurchaseOrder + String(ID)
+        case .getAllActiveBagSize:
+            return Constant.kRootPath + Constant.kAllBagSizeActive
+        case .getAllTharDocs:
+            return Constant.kRootPath + Constant.kTharDocs
+        case .getAllBranch:
+            return Constant.kRootPath + Constant.kAllBranch
+        case .approvePurchaseOrder(let ID,_):
+            return Constant.kRootPath + Constant.kApprovePurchaseOrder + String(ID)
+        case .getAllVisibleDocument:
+            return Constant.kRootPath + Constant.kAllVisibleDocument
+        case .requestDocuments(_):
+            return Constant.kRootPath + Constant.kRequestDocuments
         }
     }
     
@@ -70,12 +82,23 @@ extension ResourceType:TargetType {
         switch self {
         case .validateUser(_, _):
             return Moya.Method.post
-        case .getQuickViewData, .getAllFolderWithParentChild, .getFormBuilderData, .getAllActiveWatchHour, .getVoyageData, .getDropDownData:
+        case .getAllPurchaseOrderList, .getAllActiveBagSize, .getAllTharDocs, .getAllBranch, .getAllVisibleDocument:
             return Moya.Method.get
         case .download(_):
             return Moya.Method.get
-        case .syncingData(_):
+        case .getPurchaseOrderByPurchaseOrderId:
+            return Moya.Method.get
+        case .getRejectPurchaseOrder:
+            return Moya.Method.get
+        case .forgotUser(_) :
             return Moya.Method.post
+        case .getOnHoldPurchaseOrder(_,_):
+            return Moya.Method.post
+        case .approvePurchaseOrder(_,_):
+            return Moya.Method.post
+        case .requestDocuments(_):
+            return Moya.Method.post
+            
         }
     }
     
@@ -83,18 +106,20 @@ extension ResourceType:TargetType {
         switch self {
         case .validateUser(let userName, let password):
             return ["username":userName, "password":password]
-        case .getQuickViewData:
-            return ["page": "0", "limit": "10"]
-        case .syncingData(let syncData):
-            return ["data":syncData]
+        case .forgotUser(let email):
+            return ["emailId":email]
+        case .getOnHoldPurchaseOrder(let ID, let comment):
+            return ["orderid":ID, "model": comment]
+        case .approvePurchaseOrder(let ID,  let bagSize):
+            return ["orderid":ID, "model": bagSize]
+        case .requestDocuments(let model):
+            return ["model":model]
         default:
             return nil
         }
     }
     var para:String?{
         switch self {
-        case .syncingData(let syncData):
-            return syncData
         default:
             return nil
         }
@@ -108,20 +133,30 @@ extension ResourceType:TargetType {
         switch self {
         case .validateUser(_,_):
             return .requestParameters(parameters: parameters!, encoding: JSONEncoding.default)
-        case .getQuickViewData:
-            return .requestParameters(parameters: self.parameters!, encoding:URLEncoding.queryString)
-        case .getAllFolderWithParentChild, .getFormBuilderData, .getAllActiveWatchHour, .getVoyageData, .getDropDownData:
-            return .requestPlain
         case .download(_):
             return .downloadDestination(downloadDestination)
-        case .syncingData(_):
-            let data = Data((para?.utf8)!)
-            return .requestData(data)
+        case .getAllPurchaseOrderList , .getAllActiveBagSize , .getAllTharDocs, .getAllBranch, .getAllVisibleDocument:
+            return .requestPlain
+        case .getPurchaseOrderByPurchaseOrderId:
+            return.requestPlain
+        case .getRejectPurchaseOrder:
+            return .requestPlain
+        case .forgotUser(_):
+            return .requestParameters(parameters: parameters!, encoding: JSONEncoding.default)
+        case .getOnHoldPurchaseOrder(_,_):
+            return .requestParameters(parameters: parameters!, encoding: JSONEncoding.default)
+        case .approvePurchaseOrder(_,_):
+            return .requestParameters(parameters: parameters!, encoding: JSONEncoding.default)
+        case .requestDocuments(_):
+            return .requestParameters(parameters: parameters!, encoding: JSONEncoding.default)
         }
     }
     
     var headers: [String : String]? {
-        return ["Content-Type": "application/json"]
+        var httpHeaders: [String: String] = [:]
+        httpHeaders = ["Content-Type": "application/json"]
+        httpHeaders = ["Authorization":UserDefaults.standard.getUserToken()]
+        return httpHeaders
     }
 }
 

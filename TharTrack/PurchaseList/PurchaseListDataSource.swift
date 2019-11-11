@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+protocol PurchaseListDataSourceType {
+    
+}
+
+class PurchaseListDataSource: PurchaseListDataSourceType {
+   
+
+}

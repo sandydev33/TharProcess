@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+protocol ApprovedPurchDataSourceType {
+    
+}
+
+class ApprovedPurchDataSource : ApprovedPurchDataSourceType{
+    
+}

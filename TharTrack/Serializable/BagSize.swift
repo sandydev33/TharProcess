@@ -1,5 +1,5 @@
 //
-//  M_BagSize.swift
+//  BagSize.swift
 //  TharTrack
 //
 //  Created by Esoft on 05/11/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct M_BagSize : Codable {
+struct BagSize : Codable {
     let status : String?
     let message : String?
     let result : [M_BagSizeQty]?

@@ -7,3 +7,21 @@
 //
 
 import Foundation
+
+class ApprovedPurchViewModel: ViewModelType {
+    
+    
+    var delegate: ViewModelDelegate?
+    private var dataSource:ApprovedPurchDataSourceType
+    
+    init(dataSource:ApprovedPurchDataSourceType) {
+        self.dataSource = dataSource
+    }
+    
+    func bootstrap() {
+        
+    }
+    func createData() {
+        
+    }
+}

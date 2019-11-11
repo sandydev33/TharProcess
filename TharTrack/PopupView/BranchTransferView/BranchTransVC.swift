@@ -9,7 +9,12 @@
 import UIKit
 
 class BranchTransVC: UIViewController {
-
+    
+    @IBOutlet var contentView: UIView!
+    @IBOutlet var viewDatePicker: UIView!
+    
+    @IBOutlet weak var pickerView: UIPickerView!
+    private var datePicker: UIDatePicker!
     override func viewDidLoad() {
         super.viewDidLoad()
 

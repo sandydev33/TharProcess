@@ -39,10 +39,10 @@ extension UIColor {
     @objc class var TabSelection: UIColor {
 
         if #available(iOS 11.0, *) {
-            return UIColor(named: Constant.kColor_TabSelection) ?? UIColor.black
+            return UIColor(named: Constant.kIndicator) ?? UIColor.black
         }
         else {
-            return UIColor(hex: Constant.kHex_TabSelection) ?? UIColor.black
+            return UIColor(hex: Constant.kIndicator) ?? UIColor.black
         }
     }
     

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,9 +10,17 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FootorPopupView" customModule="TharTrack" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FooterPopupView" customModule="TharTrack" customModuleProvider="target">
             <connections>
-                <outlet property="contentView" destination="iN0-l3-epB" id="EJ2-es-IHA"/>
+                <outlet property="btnAddiDocs" destination="0hA-4m-kbr" id="oOp-Zi-brT"/>
+                <outlet property="btnAddiWidthConstraint" destination="Ajg-Nv-XOC" id="VRv-sp-VEI"/>
+                <outlet property="btnApprove" destination="Vgc-zm-qpq" id="UEG-CJ-LOp"/>
+                <outlet property="btnApproveWidthConstraint" destination="Z9t-le-CCp" id="wJw-KP-6i5"/>
+                <outlet property="btnHoldWidthConstraint" destination="mVg-Iy-bym" id="zy9-93-7LV"/>
+                <outlet property="btnOnHold" destination="aOY-iM-heQ" id="PUU-WG-0F2"/>
+                <outlet property="btnReject" destination="eqI-pc-Cut" id="WLW-F6-q1P"/>
+                <outlet property="btnRejectWidthConstraint" destination="cHg-Zc-6Il" id="Ikk-PI-KpN"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="bdr-1S-Glv"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,49 +29,90 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqI-pc-Cut">
-                    <rect key="frame" x="404" y="33" width="57" height="30"/>
+                    <rect key="frame" x="384" y="33" width="77" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="Ha0-3I-uVh"/>
-                        <constraint firstAttribute="width" constant="57" id="cHg-Zc-6Il"/>
+                        <constraint firstAttribute="height" constant="30" id="Ha0-3I-uVh">
+                            <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="57" id="cHg-Zc-6Il">
+                            <variation key="heightClass=regular-widthClass=regular" constant="77"/>
+                        </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="Reject"/>
+                    <state key="normal" title="Reject">
+                        <color key="titleColor" red="0.96213179829999995" green="0.21140325069999999" blue="0.36080834270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    </variation>
                     <connections>
                         <action selector="btnRejectTapped:" destination="-1" eventType="touchUpInside" id="IHB-hs-DI8"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOY-iM-heQ">
-                    <rect key="frame" x="339" y="33" width="60" height="30"/>
+                    <rect key="frame" x="309" y="33" width="70" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="YH9-lu-vxn"/>
-                        <constraint firstAttribute="width" constant="60" id="mVg-Iy-bym"/>
+                        <constraint firstAttribute="height" constant="30" id="YH9-lu-vxn">
+                            <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="60" id="mVg-Iy-bym">
+                            <variation key="heightClass=regular-widthClass=regular" constant="70"/>
+                        </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="On Hold"/>
+                    <state key="normal" title="On Hold">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    </variation>
                     <connections>
                         <action selector="btnOnHoldTapped:" destination="-1" eventType="touchUpInside" id="hPJ-6a-a07"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgc-zm-qpq">
-                    <rect key="frame" x="269" y="33" width="65" height="30"/>
+                    <rect key="frame" x="219" y="33" width="85" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="RTO-nF-bRb"/>
-                        <constraint firstAttribute="width" constant="65" id="Z9t-le-CCp"/>
+                        <constraint firstAttribute="height" constant="30" id="RTO-nF-bRb">
+                            <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="65" id="Z9t-le-CCp">
+                            <variation key="heightClass=regular-widthClass=regular" constant="85"/>
+                        </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="Approve"/>
+                    <state key="normal" title="Approve">
+                        <color key="titleColor" red="0.51372549019607838" green="0.74117647058823533" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                            <color key="value" red="0.52291077375411987" green="0.74620091915130615" blue="0.40772435069084167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    </variation>
                     <connections>
                         <action selector="btnApproveTapped:" destination="-1" eventType="touchUpInside" id="NdU-2J-rTx"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hA-4m-kbr">
-                    <rect key="frame" x="124" y="33" width="140" height="30"/>
+                    <rect key="frame" x="49" y="33" width="165" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="140" id="Ajg-Nv-XOC"/>
-                        <constraint firstAttribute="height" constant="30" id="MC7-6t-MnY"/>
+                        <constraint firstAttribute="width" constant="145" id="Ajg-Nv-XOC">
+                            <variation key="heightClass=regular-widthClass=regular" constant="165"/>
+                        </constraint>
+                        <constraint firstAttribute="height" constant="30" id="MC7-6t-MnY">
+                            <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                        </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="Additional Documents "/>
+                    <state key="normal" title="Additional Documents ">
+                        <color key="titleColor" red="0.29803921568627451" green="0.83137254901960778" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    </variation>
                     <connections>
                         <action selector="btnAddiDocsTapped:" destination="-1" eventType="touchUpInside" id="Ey8-ix-EfF"/>
                     </connections>

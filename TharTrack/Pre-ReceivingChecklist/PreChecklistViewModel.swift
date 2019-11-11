@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+class PreChecklistViewModel: ViewModelType {
+    
+    
+    var delegate: ViewModelDelegate?
+    
+    private var dataSource:PreChecklistDataSourceType
+    
+    init(dataSource:PreChecklistDataSourceType) {
+        self.dataSource = dataSource
+    }
+    func bootstrap() {
+        
+    }
+}

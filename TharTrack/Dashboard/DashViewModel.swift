@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+
+class DashViewModel: ViewModelType {
+   
+    var delegate: ViewModelDelegate?
+    
+    private var dataSource:DashDataSourceType
+    
+    init(dataSource:DashDataSourceType) {
+        self.dataSource = dataSource
+    }
+    func bootstrap() {
+        
+    }
+    
+    
+}

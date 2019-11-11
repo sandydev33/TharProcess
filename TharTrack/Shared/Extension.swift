@@ -9,9 +9,6 @@
 
 import Foundation
 import UIKit
-import MaterialComponents.MDCTextField
-import MaterialComponents.MaterialTypography
-
 
 
 extension UINavigationBar {
@@ -52,13 +49,13 @@ extension UINavigationBar {
 
 extension UILabel {
     struct FIELDOBJECT{
-        static var _fieldProperty:M_FormBuilder?
+        static var _fieldProperty:UILabel?
     }
     
-    var _fieldProperty : M_FormBuilder? {
+    var _fieldProperty : UILabel? {
         
         get {
-            guard let value = objc_getAssociatedObject(self, &FIELDOBJECT._fieldProperty) as? M_FormBuilder else {
+            guard let value = objc_getAssociatedObject(self, &FIELDOBJECT._fieldProperty) as? UILabel else {
                 return nil
             }
             return value
@@ -70,15 +67,15 @@ extension UILabel {
 }
 
 
-extension MDCTextField {
+extension UITextField {
     struct FIELDOBJECT{
-      static var _fieldProperty:M_FormBuilder?
+        static var _fieldProperty:M_BagSizeQty?
     }
     
-    var _fieldProperty : M_FormBuilder? {
+    var _fieldProperty : M_BagSizeQty? {
         
         get {
-            guard let value = objc_getAssociatedObject(self, &FIELDOBJECT._fieldProperty) as? M_FormBuilder else {
+            guard let value = objc_getAssociatedObject(self, &FIELDOBJECT._fieldProperty) as? M_BagSizeQty else {
                 return nil
             }
             return value
@@ -87,78 +84,25 @@ extension MDCTextField {
             objc_setAssociatedObject(self, &FIELDOBJECT._fieldProperty, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         
-    }
-    
-//    func setFontSize(size: CGFloat?) {
-//        if let newSize  = size {
-//            self.font = UIFont.systemFont(ofSize: newSize)
-//        }
-//        else {
-//             self.font = UIFont.systemFont(ofSize: 20)
-//        }
-//    }
-    
-    func setFontSize() {
-
-        switch UIDevice.current.userInterfaceIdiom {
-        case .pad:
-                self.font = UIFont.systemFont(ofSize: 20)
-        case .phone:
-                self.font = UIFont.systemFont(ofSize: 16)
-        default:
-                self.font = UIFont.systemFont(ofSize: 20)
-        }
-    }
-    
-    @IBInspectable var setMDCFont: CGFloat {
-        get {
-            
-            if let fontSize = font?.pointSize {
-                return fontSize
-            }
-            else {
-                return 0
-            }
-        }
-        set {
-            updateView(value: newValue)
-        }
-    }
-    
-    private func updateView(value: CGFloat) {
-        let typographyScheme = MDCTypographyScheme()
-        typographyScheme.caption = UIFont.systemFont(ofSize: value, weight: .regular)
-        self.font = typographyScheme.caption
-        self.placeholderLabel.font = typographyScheme.caption
-    }
-    
-    func setKeyboard(type : String?) {
-        
-//        guard let dataType = type else {return}
-//
-//        if dataType == DataType.Number.rawValue {
-//            //self.keyboardType = .decimalPad
-//             //showDatePicker()
-//        }
-//        if dataType == DataType.Text.rawValue {
-//            self.keyboardType = .default
-//        }
-//        if dataType == DataType.Date.rawValue {
-//            //showDatePicker()
-//        }
-    }
+}
 }
 
-extension MDCTextInputControllerOutlined {
+extension UITextView {
+    struct FIELDOBJECT{
+        static var _fieldProperty:UITextView?
+    }
     
-    func setTitleFont() {
-        switch UIDevice.current.userInterfaceIdiom {
-        case .pad:
-            self.inlinePlaceholderFont = MDCTypography.titleFont()
-        case .phone:
-            self.inlinePlaceholderFont = MDCTypography.titleFont()
-        default:
-            self.inlinePlaceholderFont = MDCTypography.titleFont()
+    var _fieldProperty : UITextView? {
+        
+        get {
+            guard let value = objc_getAssociatedObject(self, &FIELDOBJECT._fieldProperty) as? UITextView else {
+                return nil
+            }
+            return value
         }
+        set(newValue) {
+            objc_setAssociatedObject(self, &FIELDOBJECT._fieldProperty, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        
     }
 }

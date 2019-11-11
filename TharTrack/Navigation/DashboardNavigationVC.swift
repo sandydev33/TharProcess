@@ -22,7 +22,7 @@ class DashboardNavigationVC: UINavigationController {
 
         var colors:[Any] = []
         if #available(iOS 11.0, *) {
-            colors = [UIColor(named: "NavGreen")?.cgColor as! CGColor, UIColor(named: "NavBlue")?.cgColor as! CGColor]
+            colors = [UIColor(named: "NavGreen")?.cgColor as Any, UIColor(named: "NavBlue")?.cgColor as Any]
         } else {
             // Fallback on earlier versions
         }
@@ -35,7 +35,7 @@ class DashboardNavigationVC: UINavigationController {
         var bounds = self.navigationBar.bounds
         bounds.size.height += UIApplication.shared.statusBarFrame.size.height
         gradient.frame = bounds
-        gradient.colors = colors;
+        gradient.colors = colors
         self.navigationBar.setBackgroundImage(self.image(gradientLayer: gradient), for: .default)
     }
     

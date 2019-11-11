@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+class WorkOrderViewModel: ViewModelType {
+    
+    var delegate: ViewModelDelegate?
+    private var dataSource:WorkOrderDataSourceType
+    
+    init(dataSource:WorkOrderDataSourceType) {
+        self.dataSource = dataSource
+    }
+    func bootstrap() {
+        
+    }
+    
+  
+}

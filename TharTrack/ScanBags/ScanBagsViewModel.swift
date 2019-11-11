@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+class ScanBagsViewModel: ViewModelType {
+ 
+    var delegate: ViewModelDelegate?
+ 
+    private var dataSource:ScanBagsDataSourceType
+    
+    init(dataSource:ScanBagsDataSourceType) {
+        self.dataSource = dataSource
+    }
+    
+    func bootstrap() {
+    }
+}

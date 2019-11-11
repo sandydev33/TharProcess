@@ -1,5 +1,5 @@
 //
-//  OnHoldValue.swift
+//  UploadValue.swift
 //  TharTrack
 //
 //  Created by Esoft on 05/11/19.
@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct OnHoldValue : Codable {
+struct UploadValue : Codable {
     let comment : String?
     let companyId : Int?
     let docCheckId : [Int]?

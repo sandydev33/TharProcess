@@ -27,7 +27,9 @@ enum CustomError:Printable {
     case DownloadFailed
     case Saved
     case SavingFailed
-
+    case EmptyComment
+    case PickerValue
+    
     var localizedDescription: String {
         switch  self {
         case .NoNetwork:
@@ -56,6 +58,10 @@ enum CustomError:Printable {
             return "Data saved successfully."
         case .SavingFailed:
             return "Unable to save, try later."
+        case .EmptyComment:
+            return "Please Mention the Reason for Rejection"
+        case .PickerValue:
+            return "Please Select the Branch"
         default:
             return ""
         }

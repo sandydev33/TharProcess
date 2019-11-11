@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+protocol DashDataSourceType  {
+    
+}
+
+class DashDataSource: DashDataSourceType {
+    
+}

@@ -10,6 +10,9 @@ import UIKit
 
 class DRPopupDataCell: UITableViewCell {
 
+    @IBOutlet weak var txtTag1: UILabel!
+    @IBOutlet weak var txtTag2: UILabel!
+    @IBOutlet weak var btnCheckBox: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +24,23 @@ class DRPopupDataCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setData(data: M_DocumentDetail) {
+        txtTag1.text = data.documentType?.documentType ?? "NA"
+        txtTag2.text = data.documentName ?? "NA"
+        btnCheckBox.tag = data.documentId ?? 0
+        if Constant.saveUploadDoc[txtTag1.tag] != 0 {
+            btnCheckBox.isSelected = true
+        }
+        
+    }
+    @IBAction func btnCheckTapped(_ sender: UIButton) {
+        if btnCheckBox.isSelected {
+            Constant.saveUploadDoc[txtTag1.tag] =  0
+            sender.isSelected = false
+            
+        }else{
+        Constant.saveUploadDoc[txtTag1.tag] = sender.tag
+            sender.isSelected = true
+        }
+    }
 }

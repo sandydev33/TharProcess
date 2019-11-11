@@ -1,0 +1,6 @@
+framework module Pods_TharTrack {
+  umbrella header "Pods-TharTrack-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+
+protocol WorkOrderDataSourceType {
+    
+}
+class WorkOrderDataSource: WorkOrderDataSourceType {
+    
+}

@@ -53,17 +53,9 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
         updateArrayMenuOptions()
     }
     func updateArrayMenuOptions(){
-        let teamSize:String = UserDefaults.standard.object(forKey: "teamsize")! as! String
-        if teamSize ==  "0" {
-            arrayMenuOption = ["Home","Notification","ChangePassword","Logout","Privacy Policy"] //["Home","Associate Company","History","ChangePassword","Logout"]
-            imageArry = ["home_icon","history_icon","password_icon","logout_icon","privacy_icon"] //["home_icon","associate_icon","history_icon","password_icon","logout_icon"]
-        }else{
-            arrayMenuOption = ["Home","Notification","Team Notification","ChangePassword","Logout","Privacy Policy"] //["Home","Associate Company","History","Team History","ChangePassword","Logout"]
-            imageArry = ["home_icon","history_icon","history_icon","password_icon","logout_icon","privacy_icon"] //["home_icon","associate_icon","history_icon","history_icon","password_icon","logout_icon"]
-        }
-//        arrayMenuOption = ["Home","Associate Company","History","ChangePassword","Logout"]
-//        imageArry = ["home_icon","associate_icon","history_icon","password_icon","logout_icon"]
-       // arrayMenuOptions.append(["title":"Play"])
+      
+        arrayMenuOption = ["Dashboard","Purchase Order", "Work Order"] //["Home","Associate Company","History","ChangePassword","Logout"]
+        imageArry = ["chart","box","form"]
         tblMenuOptions.reloadData()
     }
     @IBAction func onCloseMenuClick(_ button:UIButton!){
@@ -81,41 +73,45 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
             self.view.backgroundColor = UIColor.clear
             }, completion: { (finished) -> Void in
                 self.view.removeFromSuperview()
-                self.removeFromParentViewController()
+                self.removeFromParent()
         })
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
         let cell = tableView.dequeueReusableCell(withIdentifier: "profile", for: indexPath) as! ProfileTableViewCell
-        cell.nameLabel.text = UserDefaults.standard.string(forKey:"name")!
+        cell.nameLabel.text = "Name"
         return cell
         }else{
         let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellMenu")!
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.layoutMargins = UIEdgeInsets.zero
         cell.preservesSuperviewLayoutMargins = false
         cell.backgroundColor = UIColor.clear
         let lblTitle : UILabel = cell.contentView.viewWithTag(101) as! UILabel
         let imgIcon : UIImageView = cell.contentView.viewWithTag(100) as! UIImageView
         imgIcon.image = UIImage(named: imageArry[indexPath.row])
-        lblTitle.text = arrayMenuOption[indexPath.row]
+         lblTitle.text = arrayMenuOption[indexPath.row]
+//    let txt = UserDefaults.standard.string(forKey: "selectID")
+//            if txt == arrayMenuOption[indexPath.row] {
+//                lblTitle.text = arrayMenuOption[indexPath.row]
+//                lblTitle.textColor = UIColor.blue
+//            }else{
+//                lblTitle.text = arrayMenuOption[indexPath.row]
+//            }
         return cell
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0{}else{
-        let btn = UIButton(type: UIButtonType.custom)
+        let btn = UIButton(type: UIButton.ButtonType.custom)
         btn.tag = indexPath.row
-        let cell = tableView.cellForRow(at: indexPath)
-        let lblTitle : UILabel = cell!.contentView.viewWithTag(101) as! UILabel
-        lblTitle.tag = indexPath.row
-        lblTitle.textColor = UIColor.blue
+        UserDefaults.standard.set(arrayMenuOption[indexPath.row], forKey: "selectID")
         self.onCloseMenuClick(btn)
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 137
+            return 100  
         }else{
             return 50
         }

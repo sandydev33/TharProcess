@@ -8,7 +8,7 @@
 //
 import Foundation
 
-struct Result : Codable {
+struct M_Result : Codable {
 	let token : String?
 	let username : String?
 	let profileImage : String?
@@ -22,6 +22,14 @@ struct Result : Codable {
 		case roles = "roles"
 	}
 
+    init(token:String , userName:String , profileImage:String , roles:[String]) {
+        self.token = token
+        self.username = userName
+        self.profileImage = profileImage
+        self.roles = roles
+        
+    }
+    
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		token = try values.decodeIfPresent(String.self, forKey: .token)
