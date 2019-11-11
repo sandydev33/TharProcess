@@ -4,8 +4,7 @@
 //
 //  Created by Esoft on 05/11/19.
 //  Copyright © 2019 Esoft. All rights reserved.
-//all helper class is here
-
+// Helper Class
 import Foundation
 
 class Helper {

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AD6AC0DB80786ED9CF99B871 /* Pods_TharTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1101D116AABD2C77C930EE49 /* Pods_TharTrack.framework */; };
+		AD6AC0DB80786ED9CF99B871 /* Pods_TharTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1101D116AABD2C77C930EE49 /* Pods_TharTrack.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		CD02472723716BE700439110 /* RejectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD02472623716BE700439110 /* RejectViewModel.swift */; };
 		CD02472923716BF900439110 /* RejectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD02472823716BF900439110 /* RejectDataSource.swift */; };
 		CD02472C2371A95700439110 /* OnHoldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD02472B2371A95700439110 /* OnHoldVC.swift */; };
@@ -1364,7 +1364,7 @@
 				CD37D334235482E100D4589C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		CD37D335235482E100D4589C /* Build configuration list for PBXNativeTarget "TharTrack" */ = {
 			isa = XCConfigurationList;
@@ -1373,7 +1373,7 @@
 				CD37D337235482E100D4589C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
